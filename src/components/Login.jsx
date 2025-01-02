@@ -25,6 +25,7 @@ const Login = () => {
       );
 
       if (user) {
+        localStorage.setItem("currentUser", JSON.stringify(user));
         navigate("/dashboard");
       } else {
         setError("Invalid email or password");

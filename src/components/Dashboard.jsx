@@ -1,24 +1,28 @@
 import React from "react";
-import { Button, Typography } from "@mui/material";
 import { useNavigate } from "react-router";
+import { Button, Typography } from "@mui/material";
 import "../App.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem("currentUser"));
 
   const handleLogout = () => {
+    localStorage.removeItem("currentUser");
     navigate("/login");
   };
 
   return (
     <div className="dashboard-container">
-      <Typography variant="h4" className="dashboard-heading">
-        Welcome to the Dashboard
+      <Typography className="dashboard-header">
+        Welcome, {user?.name || "User"}!
+      </Typography>
+      <Typography>
+        You are successfully logged in. Explore our features and enjoy your stay.
       </Typography>
       <Button
         variant="contained"
-        color="secondary"
-        className="logout-btn"
+        className="dashboard-logout-btn"
         onClick={handleLogout}
       >
         Logout
