@@ -1,73 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .auth-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f6f9;
-  }
-  
-  .auth-form {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-  }
-  
-  .auth-btn {
-    background-color: #1976d2;
-    color: white;
-    margin-top: 20px;
-  }
-  
-  .auth-btn:hover {
-    background-color: #1565c0;
-  }
-  
-  .auth-link {
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .auth-link a {
-    color: #1976d2;
-    text-decoration: none;
-  }
-  
-  .auth-link a:hover {
-    text-decoration: underline;
-  }
-  
-  .dashboard-container {
-    text-align: center;
-    padding: 50px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 50px auto;
-  }
-  
-  .dashboard-header {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .dashboard-logout-btn {
-    background-color: #d32f2f;
-    color: white;
-    margin-top: 20px;
-  }
-  
-  .dashboard-logout-btn:hover {
-    background-color: #b71c1c;
-  }
-  
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f6f9;
+}
+
+.auth-form {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-btn {
+  background-color: #1976d2;
+  color: white;
+  margin-top: 20px;
+}
+
+.auth-btn:hover {
+  background-color: #1565c0;
+}
+
+.auth-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.auth-link a {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.auth-link a:hover {
+  text-decoration: underline;
+}
+
+.dashboard-container {
+  text-align: center;
+  padding: 50px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.dashboard-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dashboard-logout-btn {
+  background-color: #d32f2f;
+  color: white;
+  margin-top: 20px;
+}
+
+.dashboard-logout-btn:hover {
+  background-color: #b71c1c;
+}

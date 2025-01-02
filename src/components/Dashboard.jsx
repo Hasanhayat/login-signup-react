@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Button, Typography } from "@mui/material";
 import "../App.css";
@@ -11,14 +11,17 @@ const Dashboard = () => {
     localStorage.removeItem("currentUser");
     navigate("/login");
   };
-
+  useEffect(() => {
+    document.title = "Dashboard - My App";
+  }, []);
   return (
     <div className="dashboard-container">
       <Typography className="dashboard-header">
         Welcome, {user?.name || "User"}!
       </Typography>
       <Typography>
-        You are successfully logged in. Explore our features and enjoy your stay.
+        You are successfully logged in. Explore our features and enjoy your
+        stay.
       </Typography>
       <Button
         variant="contained"

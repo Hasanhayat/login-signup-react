@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TextField, Button, Typography } from "@mui/material";
@@ -15,8 +15,12 @@ const Login = () => {
       password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email("Invalid email address").required("Email is required"),
-      password: Yup.string().min(6, "Minimum 6 characters").required("Password is required"),
+      email: Yup.string()
+        .email("Invalid email address")
+        .required("Email is required"),
+      password: Yup.string()
+        .min(6, "Minimum 6 characters")
+        .required("Password is required"),
     }),
     onSubmit: (values) => {
       const users = JSON.parse(localStorage.getItem("users")) || [];
@@ -32,6 +36,9 @@ const Login = () => {
       }
     },
   });
+  useEffect(() => {
+    document.title = "Login - My App";
+  }, []);
 
   return (
     <div className="auth-container">
