@@ -1,101 +1,74 @@
-import React, { useState } from 'react';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import { TextField, Button, IconButton, InputAdornment } from '@mui/material';
-import { useNavigate } from 'react-router';
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import React, { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import { TextField, Button, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router";
+import "../App.css";
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
-      email: '',
-      password: '',
+      email: "",
+      password: "",
     },
     validationSchema: Yup.object({
-      email: Yup.string().email('Invalid email').required('Email is required'),
-      password: Yup.string().required('Password is required'),
+      email: Yup.string().email("Invalid email address").required("Email is required"),
+      password: Yup.string().min(6, "Minimum 6 characters").required("Password is required"),
     }),
     onSubmit: (values) => {
-      const users = JSON.parse(localStorage.getItem('users')) || [];
+      const users = JSON.parse(localStorage.getItem("users")) || [];
       const user = users.find(
         (u) => u.email === values.email && u.password === values.password
       );
 
       if (user) {
-        navigate('/dashboard');
+        navigate("/dashboard");
       } else {
-        setError('Invalid email or password');
+        setError("Invalid email or password");
       }
     },
   });
 
   return (
-    <div className="container mt-5">
-      <h2>Log In</h2>
-      <form onSubmit={formik.handleSubmit} className="shadow p-4 rounded-4">
+    <div className="auth-container">
+      <form className="auth-form" onSubmit={formik.handleSubmit}>
+        <Typography variant="h5">Login</Typography>
         <TextField
           label="Email"
           name="email"
-          value={formik.values.email}
-          onChange={(e) => {
-            formik.handleChange(e);
-            setError('');
-          }}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email ? formik.errors.email : error}
           fullWidth
           margin="normal"
+          value={formik.values.email}
+          onChange={formik.handleChange}
+          error={formik.touched.email && Boolean(formik.errors.email)}
+          helperText={formik.touched.email && formik.errors.email}
         />
         <TextField
           label="Password"
           name="password"
-          type={showPassword ? 'text' : 'password'}
-          value={formik.values.password}
-          onChange={(e) => {
-            formik.handleChange(e);
-            setError('');
-          }}
-          error={formik.touched.password && Boolean(formik.errors.password)}
-          helperText={
-            formik.touched.password ? formik.errors.password : error
-          }
+          type="password"
           fullWidth
           margin="normal"
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  onClick={() => setShowPassword(!showPassword)}
-                  edge="end"
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
+          value={formik.values.password}
+          onChange={formik.handleChange}
+          error={formik.touched.password && Boolean(formik.errors.password)}
+          helperText={formik.touched.password && formik.errors.password}
         />
+        {error && <Typography color="error">{error}</Typography>}
         <Button
-          variant="contained"
-          color="primary"
           type="submit"
+          variant="contained"
+          className="auth-btn"
           fullWidth
-          className="mt-3"
         >
-          Log In
+          Login
         </Button>
-        <Button
-          variant="text"
-          onClick={() => navigate('/signup')}
-          fullWidth
-          className="mt-3"
-        >
-          Don't have an account? Sign Up
-        </Button>
+        <Typography className="auth-link">
+          Don't have an account? <Link to="/signup">Signup</Link>
+        </Typography>
       </form>
     </div>
   );
